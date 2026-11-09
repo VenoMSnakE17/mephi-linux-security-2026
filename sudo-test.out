@@ -1,0 +1,15 @@
+___M265192: SUDO test___
+___SUDO Permissions___
+Matching Defaults entries for user1 on docker-deb12:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin,
+    use_pty
+
+User user1 may run the following commands on docker-deb12:
+    (root) NOPASSWD: /usr/bin/date -s *
+___Sudoers syntax___
+/etc/sudoers: parsed OK
+/etc/sudoers.d/README: parsed OK
+/etc/sudoers.d/user1-date: parsed OK
+___System date___
+Mon Nov  9 10:41:18 AM EST 2026

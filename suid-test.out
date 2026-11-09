@@ -1,0 +1,11 @@
+___FILE-PERMISSIONS___
+  File: /home/user1/cat-suid
+  Size: 68536     	Blocks: 136        IO Block: 4096   regular file
+Device: 254,2	Inode: 130943      Links: 1
+Access: (4755/-rwsr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2026-11-09 10:12:39.761812646 -0500
+Modify: 2026-11-09 10:11:20.572218230 -0500
+Change: 2026-11-09 10:11:57.451012233 -0500
+ Birth: 2026-11-09 10:11:20.572218230 -0500
+___SUID-execution-as-user1___
+MEPHI M265192: SUID test successful

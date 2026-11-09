@@ -1,0 +1,21 @@
+___M265192: Linux capabilities___
+___Capability___
+/home/user1/chown-cap cap_chown=ep
+___Binary permissions___
+  File: /home/user1/chown-cap
+  Size: 68632     	Blocks: 136        IO Block: 4096   regular file
+Device: 254,2	Inode: 130944      Links: 1
+Access: (0755/-rwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2026-11-09 10:28:10.552379974 -0500
+Modify: 2026-11-09 10:24:26.836611253 -0500
+Change: 2026-11-09 10:27:15.474719983 -0500
+ Birth: 2026-11-09 10:24:26.836611253 -0500
+___Target ownership after exec___
+  File: /var/tmp/mephi-cap-test.txt
+  Size: 33        	Blocks: 8          IO Block: 4096   regular file
+Device: 254,2	Inode: 522740      Links: 1
+Access: (0600/-rw-------)  Uid: ( 1234/   user1)   Gid: ( 1001/students)
+Access: 2026-11-09 10:22:13.874414763 -0500
+Modify: 2026-11-09 10:22:13.874414763 -0500
+Change: 2026-11-09 10:28:10.552379974 -0500
+ Birth: 2026-11-09 10:22:13.874414763 -0500

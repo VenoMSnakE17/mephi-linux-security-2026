@@ -1,0 +1,154 @@
+    1  clear
+    2  docker run --name mysql -e MYSQL_ROOT_PASSWORD=password -d mysql --network network07
+    3  docker logs mysql 
+    4  clear
+    5  docker ps -a
+    6  docker rm mysql
+    7  clear
+    8  docker run --name mysql --network network07 -e MYSQL_ROOT_PASSWORD=password -d mysql
+    9  docker logs mysql 
+   10  docker ps -a
+   11  clear
+   12  docker ps -a
+   13  docker stop dreamy_vaughan
+   14  docker rm dreamy_vaughan
+   15  clear
+   16  clear
+   17  docker images
+   18  docker run -d -p 8080:80 --network network07 nginx-yupiyoyupie-custom
+   19  docker logs nginx-yupiyoyupie-custom
+   20  docker ps -a
+   21  docker logs frosty_cohen
+   22  curl localhost:8080
+   23  clear
+   24  docker network inspect network07
+   25  clear
+   26  docker volume ls
+   27  docker rm mysql_volume
+   28  docker volume rm mysql_volume
+   29  docker volume ls
+   30  clera
+   31  clear
+   32  docker volume create mysql_volume
+   33  docker ps -a
+   34  docker stop mysql
+   35  docker rm  mysql
+   36  docker run --name mysql-w-volume --network network07 -v mysql_volume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=password -d mysql
+   37  docker logs mysql-w-volume
+   38  сдуфк
+   39  clear
+   40  docker exec -it mysql-w-volume bash 
+   41  clear
+   42  docker exec -it mysql-w-volume bash 
+   43  clear
+   44  docker exec -it mysql-w-volume mysql 
+   45  docker exec -it mysql-w-volume mysql@password
+   46  clear
+   47  docker exec -it mysql-w-volume mysql 
+   48  docker exec -it mysql-w-volume mysql 
+   49  clear
+   50  docker exec -it mysql-w-volume mysql bash 
+   51  clear
+   52  docker exec -it mysql-w-volume bash 
+   53  clear
+   54  nano docker-compose.yaml
+   55  docke images
+   56  docker images
+   57  docker ps -a 
+   58  docker stop mysql-w-volume
+   59  docker stop frosty_cohen
+   60  docker rm frosty_cohen
+   61  docker rm mysql-w-volume
+   62  clear
+   63  docker ps -a 
+   64  docker images
+   65  nano docker-compose.yaml
+   66  apt install docker-compose
+   67  clear
+   68  docker-compose up -d docker-compose.yaml 
+   69  docker-compose -d -f docker-compose.yaml up
+   70  clear
+   71  docker-compose -f docker-compose.yaml up -d
+   72  docker ps -a
+   73  curl localhost:8080
+   74  clear
+   75  apt install sudo 
+   76  exit
+   77  nano /etc/sudoers
+   78  exit
+   79  ls
+   80  ping 8.8.8.8
+   81  cat /etc/os-release 
+   82  whoami 
+   83  id
+   84  command -v sudo
+   85  apt update 
+   86  apt install -y git sudo libcap2-bin passwd procps findutils
+   87  mkdir -p /root/mephi-linux-security-2026
+   88  groupadd -f students
+   89  useradd -m -u 1234 -G students -s /bin/bash user1
+   90  passwd user1
+   91  chage -M 90 -W 7 user1 
+   92  id user1
+   93  chage -l user1
+   94  stat /home/user1
+   95  stat /home/user1 > /root/mephi-linux-security-2026/stat.out
+   96  history
+   97  find / -type f -perm -4000 -print 2>/dev/null | sort | tee /root/mephi-linux-security-2026/suid-files.out
+   98  cat /root/mephi-linux-security-2026/suid-files.out 
+   99  docker ps -a
+  100  ps -eo pid,ruid,euid,comm | awk 'NR==1 || ($3==0 && $2>=1000 && $2<=59999)' | tee /root/mephi-linux-security-2026/privileged-processes.out
+  101  ps -eo pid,ruid,euid,comm | awk 'NR==1 || ($3==0 && $2>=1000 && $2<=59999)' | tee /root/mephi-linux-security-2026/privileged-processes.out
+  102  cat /root/mephi-linux-security-2026/privileged-processes.out 
+  103  echo "MEPHI M265192: SUID test successful" > /var/tmp/mephi-secret.txt
+  104  chown root:root /var/tmp/mephi-secret.txt 
+  105  chmod 600 /var/tmp/mephi-secret.txt 
+  106  ls -lah /var/tmp/mephi-secret.txt 
+  107  runuser -u user1 -- /usr/bin/cat /var/tmp/mephi-secret.txt
+  108  cp /usr/bin/cat /home/user1/cat-suid
+  109  chown root:root /home/user1/cat-suid 
+  110  chmod 4755 /home/user1/cat-suid 
+  111  ls -alh /home/user1/
+  112  runuser -u user1 -- /home/user1/cat-suid /var/tmp/mephi-secret.txt
+  113  stat /home/user1/cat-suid >> /root/mephi-linux-security-2026/stat.out 
+  114  {}
+  115  { echo "___FILE-PERMISSIONS___"; stat /home/user1/cat-suid ;  echo "___SUID-execution-as-user1___"; runuser -u user1 -- /home/user1/cat-suid /var/tmp/mephi-secret.txt ; } > /root/mephi-linux-security-2026/suid-test.out
+  116  cat /root/mephi-linux-security-2026/suid-test.out 
+  117  echo "MEPHI M265192: capabilities test" > /var/tmp/mephi-cap-test.txt
+  118  chown root:root  /var/tmp/mephi-cap-test.txt 
+  119  chmod 600 /var/tmp/mephi-cap-test.txt 
+  120  ls -l /var/tmp/mephi-cap-test.txt 
+  121  runuser -u user1 -- /usr/bin/chown user1:students /var/tmp/mephi-cap-test.txt
+  122  cp /usr/bin/chown /home/user1/chown-cap
+  123  chown root:root /home/user1/chown-cap 
+  124  chmod 755 /home/user1/chown-cap 
+  125  ls -lah /home/user1/chown-cap 
+  126  setcap cap_chown+ep /home/user1/chown-cap 
+  127  getcap /home/user1/chown-cap 
+  128  runuser -u user1 -- /home/user1/chown-cap user1:students /var/tmp/mephi-cap-test.txt
+  129  ls -alh /var/tmp/mephi-cap-test.txt 
+  130  stat /home/user1/chown-cap >> /root/mephi-linux-security-2026/stat.out 
+  131  getcap /home/user1/chown-cap > /root/mephi-linux-security-2026/getcap.out
+  132  { echo "___M265192: Linux capabilities___"; echo "___Capability___"; getcap /home/user1/chown-cap ;  echo "___Binary permissions___"; stat /home/user1/chown-cap ;  echo "___Target ownership after exec___"; stat /var/tmp/mephi-cap-test.txt ; } > /root/mephi-linux-security-2026/cap-test.out
+  133  cat mephi-linux-security-2026/cap-test.out 
+  134  ls -lah mephi-linux-security-2026/
+  135  whereis date
+  136  echo 'user1 ALL=(root) NOPASSWD: /usr/bin/date -s *' > /etc/sudoers.d/user1-date
+  137  chmod 440 /etc/sudoers.d/user1-date 
+  138  visudo -cf /etc/sudoers
+  139  sudo -l -U user1
+  140  runuser -u user1 -- sudo -n /usr/bin/date -s "@$(date +%s)"
+  141  date
+  142  { echo "___M265192: SUDO test___";  echo "___SUDO Permissions___"; sudo -l -U user1;  echo "___Sudoers syntax___"; visudo -cf /etc/sudoers;  echo "___System date___"; date; } > /root/mephi-linux-security-2026/sudo-test.out 2>&1
+  143  cd mephi-linux-security-2026/
+  144  mkdir -p etc/sudoers.d
+  145  cp /etc/passwd etc/passwd
+  146  cp /etc/shadow etc/
+  147  ls etc/
+  148  cp /etc/group etc/group
+  149  ls etc/
+  150  cp /etc/sudoers etc/
+  151  ls etc/
+  152  cp /etc/sudoers.d/user1-date etc/sudoers.d/
+  153  ls -lah etc/sudoers.d/
+  154  history > history.out
